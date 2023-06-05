@@ -20,6 +20,42 @@ class Channel:
         self.video_count = json_data["statistics"]["videoCount"]
         self.views_number = json_data["statistics"]["viewCount"]
 
+    def __str__(self):
+        """Возвращает представление для пользователя"""
+        return f"{self.title} ({self.url})"
+
+    def __add__(self, other):
+        """Возвращает сумму подписчиков"""
+        return int(self.followers_number) + int(other.followers_number)
+
+    def __sub__(self, other):
+        """Возвращает разность подписчиков"""
+        return int(self.followers_number) - int(other.followers_number)
+
+    def __ne__(self, other):
+        """Определяет поведение оператора неравенства, !="""
+        return int(self.followers_number) != int(other.followers_number)
+
+    def __eq__(self, other):
+        """Определяет поведение оператора равенства, ==."""
+        return int(self.followers_number) == int(other.followers_number)
+
+    def __lt__(self, other):
+        """Определяет поведение оператора меньше, <."""
+        return int(self.followers_number) < int(other.followers_number)
+
+    def __gt__(self, other):
+        """Определяет поведение оператора больше, >."""
+        return int(self.followers_number) > int(other.followers_number)
+
+    def __le__(self, other):
+        """Определяет поведение оператора меньше или равно, <=."""
+        return int(self.followers_number) <= int(other.followers_number)
+
+    def __ge__(self, other):
+        """Определяет поведение оператора больше или равно, >=."""
+        return int(self.followers_number) >= int(other.followers_number)
+
     @property
     def channel_id(self):
         return self.__channel_id

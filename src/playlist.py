@@ -47,4 +47,5 @@ class PlayList(YouTube_Service):
             if int(video['statistics']['likeCount']) > max_likes:
                 max_likes = int(video['statistics']['likeCount'])
                 popular_video = video
-        return Video(popular_video['id']).url
+        popular_video_object = Video(popular_video['id']).url
+        return popular_video_object

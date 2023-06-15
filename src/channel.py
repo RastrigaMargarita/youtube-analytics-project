@@ -1,5 +1,5 @@
 import json
-from utils import Utils
+from youtube_service import YouTube_Service
 
 
 class Channel:
@@ -8,7 +8,7 @@ class Channel:
     def __init__(self, channel_id: str) -> None:
         """Экземпляр инициализируется id канала. Дальше все данные будут подтягиваться по API."""
         self.__channel_id = channel_id
-        youtube_service = Utils.get_service()
+        youtube_service = YouTube_Service.get_service()
         json_data = youtube_service.channels().list(id=channel_id, part='snippet,statistics').execute()["items"][0]
         self.title = json_data["snippet"]["title"]
         self.description = json_data["snippet"]["description"]
